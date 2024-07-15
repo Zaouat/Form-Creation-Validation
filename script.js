@@ -25,7 +25,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Email validation
-    if (!email.includes("@") || !email.includes(".")) {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
       isValid = false;
       messages.push("Please enter a valid email address.");
     }
