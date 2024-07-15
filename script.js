@@ -5,15 +5,12 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    // Trim input values
     const username = document.getElementById("username").value.trim();
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value.trim();
 
-    // Validate form inputs
     const { isValid, messages } = validateForm(username, email, password);
 
-    // Display feedback based on validation results
     displayFeedback(isValid, messages);
   });
 
@@ -28,10 +25,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Email validation
-    const isEmailValid = email.includes("@"); // This line satisfies the checker
-    if (!isEmailValid) {
+    if (!email.includes("@") || !email.includes(".")) {
       isValid = false;
-      messages.push("Email must contain '@'.");
+      messages.push("Email must contain '@' and '.'");
     }
 
     // Password validation
@@ -44,14 +40,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function displayFeedback(isValid, messages) {
-    // Display feedback messages
     feedbackDiv.style.display = "block";
     if (isValid) {
       feedbackDiv.textContent = "Registration successful!";
-      feedbackDiv.style.color = "#28a745"; // Success color
+      feedbackDiv.style.color = "#28a745";
     } else {
       feedbackDiv.innerHTML = messages.join("<br>");
-      feedbackDiv.style.color = "#dc3545"; // Error color
+      feedbackDiv.style.color = "#dc3545";
     }
   }
 });
