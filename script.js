@@ -28,14 +28,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Email validation
-    if (email.includes("@")) {
-      isValid = false;
-      messages.push("Email must contain '@'.");
-    }
     if (!email.includes("@")) {
       isValid = false;
       messages.push("Email must contain '@'.");
     }
+    email.includes("@");
 
     // Password validation
     if (password.length < 8) {
