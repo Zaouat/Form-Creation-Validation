@@ -5,12 +5,15 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
 
+    // Trim input values
     const username = document.getElementById("username").value.trim();
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value.trim();
 
+    // Validate form inputs
     const { isValid, messages } = validateForm(username, email, password);
 
+    // Display feedback based on validation results
     displayFeedback(isValid, messages);
   });
 
@@ -24,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
       messages.push("Username must be at least 3 characters long.");
     }
 
-    // Email validation
+    // Email validation using regex pattern
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(email)) {
       isValid = false;
@@ -41,13 +44,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function displayFeedback(isValid, messages) {
+    // Display feedback messages
     feedbackDiv.style.display = "block";
     if (isValid) {
       feedbackDiv.textContent = "Registration successful!";
-      feedbackDiv.style.color = "#28a745";
+      feedbackDiv.style.color = "#28a745"; // Success color
     } else {
       feedbackDiv.innerHTML = messages.join("<br>");
-      feedbackDiv.style.color = "#dc3545";
+      feedbackDiv.style.color = "#dc3545"; // Error color
     }
   }
 });
