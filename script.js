@@ -25,9 +25,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Email validation
-    if (!email.includes('\\"@\\"') || !email.includes(".")) {
+    if (email.includes("@") && email.includes(".")) {
+      isValid = true;
+    } else {
       isValid = false;
-      messages.push("Email must contain '@' and '.'");
+      messages.push("Email must contain @ and .");
     }
 
     // Password validation
