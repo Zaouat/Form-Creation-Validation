@@ -27,7 +27,16 @@ document.addEventListener("DOMContentLoaded", () => {
       messages.push("Username must be at least 3 characters long.");
     }
 
-    // Email validation using regex pattern
+    // Email validation using includes method
+    if (!email.includes("@")) {
+      isValid = false;
+      messages.push("Email must contain '@'.");
+    } else if (!email.includes(".")) {
+      isValid = false;
+      messages.push("Email must contain a '.'.");
+    }
+
+    // Additional email structure validation using regex
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(email)) {
       isValid = false;
