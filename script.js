@@ -25,13 +25,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Email validation
+    if (!email.includes("@") && !email.includes(".")) {
+      isValid = false;
+      messages.push("Email must contain '@' and '.'");
+    }
     if (email.includes("@") && email.includes(".")) {
       isValid = true;
-    } else {
-      isValid = false;
-      messages.push("Email must contain @ and .");
     }
-
     // Password validation
     if (password.length < 8) {
       isValid = false;
